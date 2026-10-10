@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Overview from "@/components/Overview";
 import TechStack from "@/components/TechStack";
+import OnboardingWorkspace from "@/components/OnboardingWorkspace";
 
 const tabs = [
   "Overview",
   "Tech Stack",
-  "Integrations",
-  "Readiness Checklist",
+  "Onboarding Workspace",
 ] as const;
 
 export default function ReportTabs() {
@@ -21,7 +21,8 @@ export default function ReportTabs() {
         className="mb-5 mt-6 flex gap-8 overflow-x-auto border-b border-slate-200"
       >
         {tabs.map((tab) => {
-          const available = tab === "Overview" || tab === "Tech Stack";
+        //   const available = tab === "Overview" || tab === "Tech Stack";
+        const available = true;
 
           return (
             <button
@@ -46,6 +47,7 @@ export default function ReportTabs() {
 
       {activeTab === "Overview" && <Overview />}
       {activeTab === "Tech Stack" && <TechStack />}
+      {activeTab === "Onboarding Workspace" && <OnboardingWorkspace />}
     </>
   );
 }
