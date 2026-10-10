@@ -9,8 +9,8 @@ import {
     ChevronRight,
     Search,
     RotateCcw,
-    Check,
-    Download
+    Download,
+    Layers3,
 } from "lucide-react";
 
 
@@ -19,6 +19,8 @@ import { getCompanyProfile } from "@/lib/normalize";
 import { integrations } from "@/data/integrations";
 import { matchIntegrations } from "@/lib/matching";
 import IntegrationIntelligence from "@/components/IntegrationIntelligence";
+import ChecklistTask from "@/components/ChecklistTask";
+import { taskGuidance } from "@/data/taskGuidance";
 
 export default function OnboardingWorkspace() {
     const company = getCompanyProfile();
@@ -244,7 +246,7 @@ export default function OnboardingWorkspace() {
     ];
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-3">
             {/* PAGE HEADING */}
             <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
@@ -307,7 +309,7 @@ export default function OnboardingWorkspace() {
             </div>
 
             {/* WORKSPACE */}
-            <div className="grid items-start gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
+            <div className="grid items-stretch gap-3 lg:grid-cols-[290px_minmax(0,1fr)] xl:grid-cols-[340px_minmax(0,1fr)]">
 
                 {/* INTEGRATION SELECTOR */}
                 <aside className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
@@ -338,72 +340,56 @@ export default function OnboardingWorkspace() {
                     <div className="divide-y divide-slate-100">
                         {filteredMatches.map((match) => {
                             const active = selectedId === match.integration.id;
+                            const evidence = match.matchedTechnology?.evidence ?? [];
 
                             return (
                                 <button
                                     key={match.integration.id}
                                     type="button"
                                     onClick={() => setSelectedId(match.integration.id)}
-                                    className={`flex w-full items-center gap-3 border-l-[3px] px-4 py-2.5 text-left transition-colors ${active
+                                    aria-pressed={active}
+                                    className={`flex w-full items-center gap-3 border-l-[3px] px-3 py-3 text-left transition-colors ${active
                                         ? "border-blue-600 bg-blue-50/70"
                                         : "border-transparent hover:bg-slate-50"
                                         }`}
                                 >
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                                    {/* Brand logo */}
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
                                         <IntegrationLogo
                                             id={match.integration.id}
-                                            size={30}
+                                            size={32}
                                         />
                                     </div>
 
+                                    {/* Integration information */}
                                     <div className="min-w-0 flex-1">
                                         <p className="truncate text-sm font-semibold text-slate-900">
                                             {match.integration.name}
                                         </p>
 
-                                        <div className="mt-1 flex flex-wrap items-center gap-2">
-                                            <span
-                                                className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${match.status === "detected"
-                                                    ? "bg-emerald-100 text-emerald-700"
-                                                    : "bg-slate-100 text-slate-500"
-                                                    }`}
-                                            >
-                                                {match.status === "detected"
-                                                    ? "● Detected"
-                                                    : "Not detected"}
-                                            </span>
-                                        </div>
+                                        <span
+                                            className={`mt-1 inline-flex rounded-full px-2 py-0.5 text-[11px] font-medium ${match.status === "detected"
+                                                ? "bg-emerald-100 text-emerald-700"
+                                                : "bg-slate-100 text-slate-500"
+                                                }`}
+                                        >
+                                            {match.status === "detected"
+                                                ? "● Detected"
+                                                : "Not detected"}
+                                        </span>
 
-                                        <p className="mt-1.5 text-xs text-slate-500">
+                                        <p className="mt-1.5 text-[11px] leading-4 text-slate-500">
+                                            {evidence.length} Clay sources
+                                            <span className="mx-1.5">·</span>
                                             First detected:{" "}
-                                            {match.matchedTechnology?.firstDetected ??
-                                                "Unknown"}
+                                            {match.matchedTechnology?.firstDetected ?? "Unknown"}
                                         </p>
-                                        <div className="mt-2 flex items-center gap-2">
-                                            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200">
-                                                <div
-                                                    className="h-full rounded-full bg-blue-600 transition-all duration-300"
-                                                    style={{
-                                                        width: `${match.checklist.length
-                                                            ? ((completedTasks[match.integration.id]?.length ?? 0) /
-                                                                match.checklist.length) *
-                                                            100
-                                                            : 0
-                                                            }%`,
-                                                    }}
-                                                />
-                                            </div>
-
-                                            <span className="text-[11px] text-slate-500">
-                                                {completedTasks[match.integration.id]?.length ?? 0}/
-                                                {match.checklist.length}
-                                            </span>
-                                        </div>
                                     </div>
 
                                     <ChevronRight
                                         size={16}
-                                        className="shrink-0 text-slate-400"
+                                        className={`shrink-0 ${active ? "text-blue-600" : "text-slate-400"
+                                            }`}
                                     />
                                 </button>
                             );
@@ -419,47 +405,70 @@ export default function OnboardingWorkspace() {
 
                 {/* SELECTED INTEGRATION */}
                 <section className="min-w-0 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                    <div className="border-b border-slate-100 bg-gradient-to-r from-white to-blue-50/60 p-5">
-                        <div className="flex flex-wrap items-start gap-4">
-                            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
-                                <IntegrationLogo
-                                    id={selected.integration.id}
-                                    size={26}
-                                />
-                            </div>
+                    {/* SELECTED INTEGRATION HEADER */}
+                    <div className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-r from-white via-white to-blue-50/70 px-5 py-5">
 
-                            <div className="min-w-0 flex-1">
-                                <div className="flex flex-wrap items-center gap-3">
-                                    <h3 className="text-xl font-bold text-slate-900">
-                                        {selected.integration.name}
-                                    </h3>
+                        {/* Subtle decorative accent */}
+                        <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -right-16 -bottom-28 h-52 w-52 rounded-full bg-orange-100/60 blur-3xl"
+                        />
 
-                                    <span
-                                        className={`rounded-full px-2.5 py-1 text-xs font-medium ${selected.status === "detected"
-                                            ? "bg-emerald-100 text-emerald-700"
-                                            : "bg-slate-100 text-slate-600"
-                                            }`}
-                                    >
-                                        {selected.status === "detected"
-                                            ? "● Detected in Clay data"
-                                            : "Not detected"}
-                                    </span>
+                        <div className="relative flex flex-wrap items-start justify-between gap-4">
+                            <div className="flex min-w-0 items-center gap-4">
+                                {/* Logo */}
+                                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-white shadow-sm">
+                                    <IntegrationLogo
+                                        id={selected.integration.id}
+                                        size={44}
+                                    />
                                 </div>
 
-                                <p className="mt-2 text-sm text-slate-500">
-                                    {selected.integration.description}
-                                </p>
+                                {/* Name and description */}
+                                <div className="min-w-0">
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        <h3 className="text-xl font-bold tracking-tight text-slate-900">
+                                            {selected.integration.name}
+                                        </h3>
 
-                                <p className="mt-2 text-xs text-blue-600">
-                                    {selected.integration.category}
-                                </p>
+                                        <span className="rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[11px] font-medium text-blue-700">
+                                            {selected.integration.category}
+                                        </span>
+
+                                        {selected.matchedTechnology &&
+                                            selected.matchedTechnology.category !==
+                                            selected.integration.category && (
+                                                <span className="rounded-full border border-violet-100 bg-violet-50 px-2.5 py-1 text-[11px] font-medium text-violet-700">
+                                                    <Layers3 size={12} className="mr-1 inline-block" />
+                                                    {selected.matchedTechnology.category}
+                                                </span>
+                                            )}
+                                    </div>
+
+                                    <p className="mt-2 max-w-xl text-sm leading-5 text-slate-500">
+                                        {selected.integration.description}
+                                    </p>
+                                </div>
                             </div>
+
+                            {/* Clay detection status */}
+                            <span
+                                className={`inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium ${selected.status === "detected"
+                                    ? "bg-emerald-100 text-emerald-700"
+                                    : "bg-slate-100 text-slate-600"
+                                    }`}
+                            >
+                                <CheckCircle2 size={15} />
+                                {selected.status === "detected"
+                                    ? "Detected in Clay data"
+                                    : "Not detected"}
+                            </span>
                         </div>
                     </div>
 
                     {/* Placeholder for Step 8B */}
                     {/* WORKSPACE CONTENT */}
-                    <div className="grid items-start gap-4 p-4 xl:grid-cols-[1.4fr_1fr]">
+                    <div className="grid items-start gap-3 p-3 xl:grid-cols-[1.05fr_1fr]">
 
                         {/* LEFT: INTERACTIVE CHECKLIST */}
                         <div className="min-w-0">
@@ -513,56 +522,32 @@ export default function OnboardingWorkspace() {
                                 </div>
 
                                 {/* Task rows */}
-                                <div className="mt-3 space-y-2">
+                                {/* Task rows */}
+                                <div className="mt-3 space-y-1.5">
                                     {selected.checklist.map((task, index) => {
                                         const completed = selectedCompleted.includes(index);
 
+                                        const guidance = taskGuidance[selected.integration.id]?.[index];
+
                                         return (
-                                            <label
+                                            <ChecklistTask
                                                 key={`${selected.integration.id}-${index}`}
-                                                className={`flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-3 transition-colors ${completed
-                                                    ? "border-emerald-200 bg-emerald-50/60"
-                                                    : "border-slate-200 bg-white hover:border-blue-200 hover:bg-blue-50/30"
-                                                    }`}
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    checked={completed}
-                                                    disabled={!progressLoaded}
-                                                    onChange={() =>
-                                                        toggleTask(selected.integration.id, index)
-                                                    }
-                                                    className="sr-only"
-                                                />
-
-                                                {/* Checkbox */}
-                                                <span
-                                                    aria-hidden="true"
-                                                    className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border ${completed
-                                                        ? "border-emerald-500 bg-emerald-500 text-white"
-                                                        : "border-slate-300 bg-white"
-                                                        }`}
-                                                >
-                                                    {completed && <Check size={13} strokeWidth={3} />}
-                                                </span>
-
-                                                {/* Task information */}
-                                                <div className="min-w-0 flex-1">
-                                                    <p
-                                                        className={`text-sm font-medium ${completed
-                                                            ? "text-slate-600 line-through decoration-slate-400"
-                                                            : "text-slate-800"
-                                                            }`}
-                                                    >
-                                                        {task}
-                                                    </p>
-                                                </div>
-
-                                                {/* Step number */}
-                                                <span className="shrink-0 rounded-md bg-slate-100 px-2 py-1 text-[11px] text-slate-500">
-                                                    {index + 1}
-                                                </span>
-                                            </label>
+                                                task={task}
+                                                index={index}
+                                                completed={completed}
+                                                disabled={!progressLoaded}
+                                                description={
+                                                    guidance?.description ??
+                                                    "Review the technical requirements for this step."
+                                                }
+                                                details={
+                                                    guidance?.details ??
+                                                    "Confirm the necessary configuration before proceeding."
+                                                }
+                                                onToggle={() =>
+                                                    toggleTask(selected.integration.id, index)
+                                                }
+                                            />
                                         );
                                     })}
                                 </div>
@@ -587,9 +572,9 @@ export default function OnboardingWorkspace() {
                         </div>
 
                         {/* RIGHT: DETECTION & REQUIREMENTS */}
-                        <div className="min-w-0">
-                            <IntegrationIntelligence match={selected} />
-                        </div>
+<div className="@container min-w-0">
+  <IntegrationIntelligence match={selected} />
+</div>
 
                     </div>
                 </section>
