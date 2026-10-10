@@ -93,7 +93,7 @@ export default function Overview() {
             {/* ───── INTEGRATION SUMMARY ───── */}
 
             <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                <h2 className="text-base font-semibold text-slate-900">
+                <h2 className="text-[19px] font-bold text-[#171717]">
                     Integration readiness summary
                 </h2>
 
@@ -112,14 +112,14 @@ export default function Overview() {
                                 <span className="text-2xl font-bold text-slate-900">
                                     {detected}/{matches.length}
                                 </span>
-                                <span className="text-xs text-slate-500">
+                                <span className="text-[13px] font-medium text-[#686868]">
                                     Detected
                                 </span>
                             </div>
                         </div>
 
                         <div className="min-w-0 flex-1">
-                            <p className="max-w-sm text-sm leading-5 text-slate-600">
+                            <p className="max-w-sm text-[15px] font-medium leading-6 text-[#484848]">
                                 Technology matches identified using Clay enrichment
                                 and our illustrative integration catalog.
                             </p>
@@ -135,7 +135,7 @@ export default function Overview() {
                                             {detected}
                                         </span>
                                     </div>
-                                    <p className="mt-0.5 text-xs text-slate-500">
+                                    <p className="mt-0.5 text-[13px] font-medium text-[#686868]">
                                         Detected
                                     </p>
                                 </div>
@@ -150,7 +150,7 @@ export default function Overview() {
                                             {notDetected}
                                         </span>
                                     </div>
-                                    <p className="mt-0.5 text-xs text-slate-500">
+                                    <p className="mt-0.5 text-[13px] font-medium text-[#686868]">
                                         Not detected
                                     </p>
                                 </div>
@@ -162,12 +162,12 @@ export default function Overview() {
                     <div className="rounded-xl bg-blue-50/70 px-5 py-4">
                         <div className="flex items-center gap-2">
                             <Sparkles size={16} className="text-blue-600" />
-                            <h3 className="text-sm font-semibold text-slate-900">
+                            <h3 className="text-md font-semibold text-slate-900">
                                 Key takeaways
                             </h3>
                         </div>
 
-                        <ul className="mt-3 list-disc space-y-2 pl-4 text-xs leading-5 text-slate-600">
+                        <ul className="mt-3 list-disc space-y-2 pl-4 text-[14px] font-medium leading-6 text-[#484848]">
                             <li>
                                 {detected} of {matches.length} catalog technologies
                                 were detected.
@@ -190,7 +190,7 @@ export default function Overview() {
             {/* ───── DETECTED TECHNOLOGIES ───── */}
 
             <section>
-                <h2 className="mb-3 text-base font-semibold text-slate-900">
+                <h2 className="mb-3 text-[19px] font-bold tracking-tight text-[#171717]">
                     Detected technologies
                 </h2>
 
@@ -220,11 +220,10 @@ export default function Overview() {
                                         </div>
 
                                         <div>
-                                            <h3 className="text-sm font-semibold text-slate-900">
+                                            <h3 className="text-[15px] font-bold tracking-tight text-[#171717]">
                                                 {category.label}
                                             </h3>
-
-                                            <p className="text-xs text-slate-500">
+                                            <p className="mt-0.5 text-[13px] font-medium text-[#686868]">
                                                 {technologies.length} detected
                                             </p>
                                         </div>
@@ -236,7 +235,7 @@ export default function Overview() {
                                     />
                                 </div>
 
-                                <p className="mt-3 line-clamp-2 text-xs leading-5 text-slate-500">
+                                <p className="mt-3 line-clamp-2 text-[14px] font-medium leading-[22px] text-[#525252]">
                                     {technologies.map((t) => t.name).join(", ") ||
                                         "No technologies detected"}
                                 </p>
@@ -248,28 +247,28 @@ export default function Overview() {
 
             {/* ───── DETAILS + NEXT ACTIONS ───── */}
 
-            <div className="grid items-start gap-4 xl:grid-cols-[1.65fr_1fr]">
+            <div className="grid items-start gap-4 xl:grid-cols-[1.85fr_1fr]">
 
                 {/* Integration details */}
                 <section className="min-w-0 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <h2 className="mb-4 text-base font-semibold text-slate-900">
+                    <h2 className="mb-4 text-[19px] font-bold text-[#171717]">
                         Integration details
                     </h2>
 
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-xs">
+                        <table className="w-full text-left text-[14px]">
                             <thead>
                                 <tr className="border-b border-slate-200 bg-slate-50 text-slate-500">
-                                    <th className="px-3 py-3 font-medium">
+                                    <th className="px-3 py-3.5 font-medium">
                                         Integration
                                     </th>
-                                    <th className="px-3 py-3 font-medium">
+                                    <th className="px-3 py-3.5 font-medium">
                                         Status
                                     </th>
-                                    <th className="px-3 py-3 font-medium">
+                                    <th className="px-3 py-3.5 font-medium">
                                         Evidence
                                     </th>
-                                    <th className="px-3 py-3 font-medium">
+                                    <th className="px-3 py-3.5 font-medium">
                                         First detected
                                     </th>
                                 </tr>
@@ -287,19 +286,19 @@ export default function Overview() {
                                             key={match.integration.id}
                                             className="border-b border-slate-100 last:border-0"
                                         >
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <div className="flex items-center gap-2">
                                                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-50">
                                                         <IntegrationLogo id={match.integration.id} size={22} />
                                                     </div>
 
-                                                    <span className="font-medium text-slate-900">
+                                                    <span className="text-[14px] font-semibold text-[#171717]">
                                                         {match.integration.name}
                                                     </span>
                                                 </div>
                                             </td>
 
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <span
                                                     className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 font-medium ${match.status === "detected"
                                                         ? "bg-emerald-50 text-emerald-700"
@@ -312,14 +311,37 @@ export default function Overview() {
                                                 </span>
                                             </td>
 
-                                            <td className="max-w-48 px-3 py-3 text-slate-600">
-                                                <span className="line-clamp-2">
-                                                    {match.matchedTechnology?.evidence.join(", ") ||
-                                                        "Not available"}
-                                                </span>
+                                            <td className="px-3 py-3.5">
+                                                <div className="flex max-w-[280px] flex-wrap gap-1.5">
+                                                    {match.matchedTechnology?.evidence.length ? (
+                                                        match.matchedTechnology.evidence.map((source) => {
+                                                            const sourceColors: Record<string, string> = {
+                                                                BuyerCaddy: "bg-blue-50 text-blue-700",
+                                                                PredictLeads: "bg-violet-50 text-violet-700",
+                                                                BuiltWith: "bg-amber-50 text-amber-700",
+                                                                "Clay Job Posting": "bg-rose-50 text-rose-700",
+                                                            };
+
+                                                            return (
+                                                                <span
+                                                                    key={source}
+                                                                    className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-[12px] font-semibold ${sourceColors[source] ??
+                                                                        "bg-slate-100 text-slate-700"
+                                                                        }`}
+                                                                >
+                                                                    {source}
+                                                                </span>
+                                                            );
+                                                        })
+                                                    ) : (
+                                                        <span className="text-[13px] text-slate-400">
+                                                            Not available
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </td>
 
-                                            <td className="whitespace-nowrap px-3 py-3 text-slate-600">
+                                            <td className="whitespace-nowrap px-3 py-3.5 text-slate-600">
                                                 {match.matchedTechnology?.firstDetected ??
                                                     "Unknown"}
                                             </td>
@@ -337,11 +359,11 @@ export default function Overview() {
                 </section>
 
                 {/* Recommended next actions */}
-                <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <section className="rounded-xl border border-[#E5E1DA] bg-white px-4 py-4 shadow-sm transition-shadow hover:shadow-md">
                     <div className="flex items-center gap-2">
                         <ListTodo size={18} className="text-blue-600" />
 
-                        <h2 className="text-base font-semibold text-slate-900">
+                        <h2 className="text-[19px] font-bold text-[#171717]">
                             Recommended next actions
                         </h2>
                     </div>
@@ -370,7 +392,7 @@ export default function Overview() {
                                         </p>
                                     </div>
 
-                                    <p className="mt-1 text-xs leading-5 text-slate-600">
+                                    <p className="mt-1 text-[14px] font-medium leading-6 text-[#484848]">
                                         {action.task}
                                     </p>
                                 </div>
@@ -378,7 +400,7 @@ export default function Overview() {
                         ))}
                     </div>
 
-                    <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-xs text-slate-500">
+                    <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-[13px] font-medium text-[#686868]">
                         <ArrowRight size={14} />
                         Full onboarding checklist available in the
                         Readiness Checklist tab.

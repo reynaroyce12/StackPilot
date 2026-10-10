@@ -26,7 +26,7 @@ export default function DashboardHeader() {
           placeholder="Enter a company domain (e.g. databricks.com)"
           aria-label="Company domain"
           disabled
-          className="w-full bg-transparent text-sm text-slate-600 outline-none placeholder:text-slate-400"
+          className="w-full bg-transparent text-[15px] font-semibold tracking-[-0.035em] text-[#171717] outline-none placeholder:text-slate-400"
         />
 
         <button
@@ -45,7 +45,7 @@ export default function DashboardHeader() {
           </div>
 
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-950">
+            <h1 className="text-[28px] font-bold tracking-[-0.04em] text-[#171717]">
               {company.name}
             </h1>
 
@@ -53,14 +53,14 @@ export default function DashboardHeader() {
               href={`https://${company.domain}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600"
+              className="mt-1 flex items-center gap-2 text-[15px] font-medium text-[#686868] hover:text-blue-600"
             >
               {company.domain}
               <ExternalLink size={13} />
             </a>
 
             {/* Compact company statistics */}
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-medium text-[#686868]">
               <span>
                 <strong className="text-slate-800">
                   {company.technologies.length}

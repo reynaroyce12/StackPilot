@@ -250,10 +250,6 @@ export default function OnboardingWorkspace() {
             {/* PAGE HEADING */}
             <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-600">
-                        Onboarding Workspace
-                    </p>
-
                     <h2 className="mt-1 text-xl font-bold text-slate-950">
                         Turn detected technologies into setup plans
                     </h2>
@@ -300,7 +296,7 @@ export default function OnboardingWorkspace() {
                                 </div>
                             </div>
 
-                            <p className="mt-3 text-xs text-slate-500">
+                            <p className="mt-3 text-[13px] font-medium text-[#686868]">
                                 {stat.detail}
                             </p>
                         </div>
@@ -348,7 +344,7 @@ export default function OnboardingWorkspace() {
                                     type="button"
                                     onClick={() => setSelectedId(match.integration.id)}
                                     aria-pressed={active}
-                                    className={`flex w-full items-center gap-3 border-l-[3px] px-3 py-3 text-left transition-colors ${active
+                                    className={`flex w-full items-center gap-3 border-l-[3px] px-3 py-3.5 text-left transition-colors ${active
                                         ? "border-blue-600 bg-blue-50/70"
                                         : "border-transparent hover:bg-slate-50"
                                         }`}
@@ -363,7 +359,7 @@ export default function OnboardingWorkspace() {
 
                                     {/* Integration information */}
                                     <div className="min-w-0 flex-1">
-                                        <p className="truncate text-sm font-semibold text-slate-900">
+                                        <p className="truncate text-[16px] font-bold text-[#171717]">
                                             {match.integration.name}
                                         </p>
 

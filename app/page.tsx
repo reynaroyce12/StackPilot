@@ -82,10 +82,10 @@ import ReportTabs from "@/components/ReportTabs";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-[#f8fafc]">
+    <div className="flex min-h-screen bg-[#ffffff]">
       <Sidebar />
 
-      <main className="min-w-0 flex-1 px-5 py-5 md:px-8">
+      <main className="min-w-0 flex-1 bg-white px-5 py-5 md:px-8">
         <div className="mx-auto max-w-7xl">
           <DashboardHeader />
           <ReportTabs />

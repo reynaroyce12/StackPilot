@@ -78,7 +78,7 @@ export default function TechStack() {
                                 </div>
                             </div>
 
-                            <p className="mt-3 text-xs text-slate-500">
+                            <p className="mt-3 text-[13px] font-medium text-[#686868]">
                                 {stat.detail}
                             </p>
                         </div>
@@ -89,7 +89,7 @@ export default function TechStack() {
             <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="mb-4 flex items-center gap-2">
                     <BarChart3 size={18} className="text-blue-600" />
-                    <h2 className="text-base font-semibold text-slate-900">
+                    <h2 className="text-[19px] font-bold text-[#171717]">
                         Technology distribution
                     </h2>
                 </div>

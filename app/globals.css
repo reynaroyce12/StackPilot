@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
+/* StackPilot Design System */
 :root {
-  --background: #ffffff;
+  --background: #faf9f6;
   --foreground: #171717;
+
+  --sp-background: #ffffff;
+  --sp-surface: #ffffff;
+  --sp-sidebar: #f8f7f4;
+
+  --sp-text: #171717;
+  --sp-muted: #686868;
+  --sp-border: #e8e5df;
+
+  --sp-blue: #1673ff
 }
 
+/* Tailwind Theme */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global Styles */
+body {
+  background: var(--sp-background);
+  color: var(--sp-text);
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Form Elements */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Clay-inspired typography refinements */
+
+:root {
+  --sp-heading: #171717;
+  --sp-body: #343434;
+  --sp-muted: #686868;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--sp-heading);
+  letter-spacing: -0.025em;
+}
+
+button {
+  font-weight: 500;
 }

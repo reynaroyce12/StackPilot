@@ -365,10 +365,10 @@ export default function TechnologyInventory({
             <section className="min-w-0 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
                     <div>
-                        <h2 className="text-base font-semibold text-slate-900">
+                        <h2 className="text-[19px] font-bold text-[#171717]">
                             Technologies ({filtered.length})
                         </h2>
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-1 text-[13px] font-medium text-[#686868]">
                             Technology signals identified through Clay enrichment.
                         </p>
                     </div>
@@ -385,14 +385,14 @@ export default function TechnologyInventory({
                 </div>
 
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left text-xs">
+                    <table className="w-full text-left text-[14px]">
                         <thead className="bg-slate-50 text-slate-500">
                             <tr className="border-b border-slate-200">
-                                <th className="px-3 py-3 font-medium">Technology</th>
-                                <th className="px-3 py-3 font-medium">Category</th>
-                                <th className="px-3 py-3 font-medium">Catalog match</th>
-                                <th className="px-3 py-3 font-medium">Evidence sources</th>
-                                <th className="px-3 py-3 font-medium">First detected</th>
+                                <th className="px-3 py-3.5 font-medium">Technology</th>
+                                <th className="px-3 py-3.5 font-medium">Category</th>
+                                <th className="px-3 py-3.5 font-medium">Catalog match</th>
+                                <th className="px-3 py-3.5 font-medium">Evidence sources</th>
+                                <th className="px-3 py-3.5 font-medium">First detected</th>
                             </tr>
                         </thead>
 
@@ -407,7 +407,7 @@ export default function TechnologyInventory({
                                             key={technology.id}
                                             className="border-b border-slate-100 last:border-0 hover:bg-blue-50/30"
                                         >
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <div className="flex min-w-40 items-center gap-2">
                                                     <TechnologyLogo name={technology.name} />
 
@@ -430,7 +430,7 @@ export default function TechnologyInventory({
                                                 </div>
                                             </td>
 
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <span
                                                     className={`inline-flex whitespace-nowrap rounded-md px-2 py-1 ${categoryColors[technology.category] ??
                                                         "bg-slate-100 text-slate-600"
@@ -440,7 +440,7 @@ export default function TechnologyInventory({
                                                 </span>
                                             </td>
 
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <span
                                                     className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 ${matched
                                                         ? "bg-emerald-50 text-emerald-700"
@@ -451,7 +451,7 @@ export default function TechnologyInventory({
                                                 </span>
                                             </td>
 
-                                            <td className="px-3 py-3">
+                                            <td className="px-3 py-3.5">
                                                 <div className="flex max-w-48 flex-wrap gap-1">
                                                     {technology.evidence.length ? (
                                                         <>
@@ -486,7 +486,7 @@ export default function TechnologyInventory({
                                                 </div>
                                             </td>
 
-                                            <td className="whitespace-nowrap px-3 py-3 text-slate-600">
+                                            <td className="whitespace-nowrap px-3 py-3.5 text-slate-600">
                                                 {technology.firstDetected ?? "Unknown"}
                                             </td>
                                         </tr>
@@ -504,7 +504,7 @@ export default function TechnologyInventory({
                                                                 {technology.name}
                                                             </p>
 
-                                                            <p className="mt-1 text-xs text-slate-500">
+                                                            <p className="mt-1 text-[13px] font-medium text-[#686868]">
                                                                 {technology.category}
                                                             </p>
                                                         </div>
@@ -525,7 +525,7 @@ export default function TechnologyInventory({
                                                                         </span>
                                                                     ))
                                                                 ) : (
-                                                                    <p className="text-xs text-slate-500">
+                                                                    <p className="text-[13px] font-medium text-[#686868]">
                                                                         No evidence sources provided
                                                                     </p>
                                                                 )}
@@ -582,7 +582,7 @@ export default function TechnologyInventory({
 
                 {/* Pagination */}
                 <div className="flex items-center justify-between border-t border-slate-100 px-4 py-3">
-                    <p className="text-xs text-slate-500">
+                    <p className="text-[13px] font-medium text-[#686868]">
                         {filtered.length
                             ? `Showing ${(currentPage - 1) * PAGE_SIZE + 1}–${Math.min(
                                 currentPage * PAGE_SIZE,

@@ -119,7 +119,7 @@ export default function ChecklistTask({
             Implementation guidance
           </p>
 
-          <p className="mt-1 text-xs leading-5 text-slate-600">
+          <p className="mt-1 text-[14px] font-medium leading-6 text-[#484848]">
             {details}
           </p>
         </div>

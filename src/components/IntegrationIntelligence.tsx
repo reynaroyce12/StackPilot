@@ -44,7 +44,7 @@ export default function IntegrationIntelligence({ match }: Props) {
             <section className="rounded-xl border border-slate-200 bg-white p-4">
                 <div className="flex items-center gap-2">
                     <Database size={17} className="text-blue-600" />
-                    <h3 className="text-sm font-semibold text-slate-900">
+                    <h3 className="text-[16px] font-bold text-[#171717]">
                         Detection Summary
                     </h3>
                 </div>
@@ -57,20 +57,20 @@ export default function IntegrationIntelligence({ match }: Props) {
                         />
 
                         <div>
-                            <p className="text-xs text-slate-500">
+                            <p className="text-[13px] font-medium text-[#686868]">
                                 First detected
                             </p>
-                            <p className="mt-1 text-sm font-semibold text-slate-900">
+                            <p className="mt-1 text-[16px] font-bold text-[#171717]">
                                 {technology?.firstDetected ?? "Unknown"}
                             </p>
                         </div>
                     </div>
 
                     <div>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-[13px] font-medium text-[#686868]">
                             Evidence sources
                         </p>
-                        <p className="mt-1 text-sm font-semibold text-slate-900">
+                        <p className="mt-1 text-[16px] font-bold text-[#171717]">
                             {evidence.length}
                         </p>
                     </div>
@@ -119,7 +119,7 @@ export default function IntegrationIntelligence({ match }: Props) {
                     </h3>
                 </div>
 
-                <p className="mt-2 text-xs leading-5 text-slate-600">
+                <p className="mt-2 text-[14px] font-medium leading-6 text-[#484848]">
                     {integrationContext[match.integration.id] ??
                         "Review technical prerequisites before starting integration work."}
                 </p>
