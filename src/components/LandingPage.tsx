@@ -134,7 +134,7 @@ export default function LandingPage() {
               {/* Clay Attribution */}
               <span className="hidden items-center gap-1.5 sm:flex">
                 <span className="text-[12px] font-medium tracking-[-0.015em] text-[#777777]">
-                  Developer productivity, powered by
+                  Engineering productivity, powered by
                 </span>
 
                 <img
