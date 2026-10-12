@@ -7,13 +7,13 @@ import {
   ArrowRight,
   ArrowUpRight,
   Building2,
-  Star,
   Database,
   Link2,
   CheckCircle2,
   Users,
-  Sparkles,
 } from "lucide-react";
+
+import FeatureStack from "@/components/FeatureStack";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -131,12 +131,29 @@ export default function LandingPage() {
               />
             </div>
 
-            <span className="flex flex-col">
-              <span className="text-[23px] font-bold leading-none tracking-[-0.055em]">
+            <span className="flex flex-col gap-1">
+              {/* StackPilot Branding */}
+              <span className="text-[24px] font-bold leading-none tracking-[-0.055em] text-[#171717]">
                 StackPilot
               </span>
-              <span className="mt-1 hidden whitespace-nowrap text-[12px] font-medium tracking-[-0.01em] text-[#777777] sm:block">
-                Developer productivity, powered by Clay enrichment.
+
+              {/* Clay Attribution */}
+              <span className="hidden items-center gap-1.5 sm:flex">
+                <span className="text-[12px] font-medium tracking-[-0.015em] text-[#777777]">
+                  Developer productivity, powered by
+                </span>
+
+                <img
+                  src="/logos/clay-logo.svg"
+                  alt="Clay"
+                  width={16}
+                  height={16}
+                  className="h-4 w-4 shrink-0 object-contain"
+                />
+
+                <span className="text-[12px] font-semibold tracking-[-0.015em] text-[#343434]">
+                  Clay
+                </span>
               </span>
             </span>
           </Link>
@@ -162,7 +179,7 @@ export default function LandingPage() {
           {/* Actions */}
           <div className="flex items-center gap-3">
 
-            {/* GitHub link will be activated after publishing */}
+            {/* GitHub link will be activated after publishing
             <button
               type="button"
               disabled
@@ -171,7 +188,7 @@ export default function LandingPage() {
             >
               <Star size={17} />
               Star on GitHub
-            </button>
+            </button> */}
 
             <button
               type="button"
@@ -193,9 +210,16 @@ export default function LandingPage() {
 
           {/* Clay badge */}
           <div className="mb-8 inline-flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-[#E8E5DF] bg-[#FAF9F7] px-4 py-2 shadow-sm">
-            <span className="flex items-center gap-1.5 text-[12px] font-semibold text-[#292929]">
-              <span aria-hidden="true">🌈</span>
+            <span className="flex items-center gap-2 text-[13px] font-semibold text-[#292929]">
               Powered by Clay
+              <img
+                src="/logos/clay-logo.svg"
+                alt=""
+                width={22}
+                height={22}
+                className="h-[22px] w-auto object-contain"
+              />
+
             </span>
 
             <span className="hidden h-4 w-px bg-[#DEDAD3] sm:block" />
@@ -395,53 +419,7 @@ export default function LandingPage() {
                 </button>
               </div>
 
-              {/* Company preview */}
-              <div className="rounded-2xl border border-[#E5E1DA] bg-white p-6 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFF5F2] text-[27px] font-bold text-[#FF3621]">
-                      ◈
-                    </div>
-
-                    <div>
-                      <h3 className="text-[17px] font-bold text-[#171717]">
-                        Databricks
-                      </h3>
-
-                      <p className="text-[13px] text-[#686868]">
-                        databricks.com
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="rounded-full bg-[#E3F8EC] px-3 py-1 text-[12px] font-semibold text-[#087B4B]">
-                    Clay enriched
-                  </span>
-                </div>
-
-                <div className="mt-6 grid grid-cols-3 gap-3 border-y border-[#F0EDE8] py-5">
-                  {[
-                    { value: "91", label: "Tech entries" },
-                    { value: "10", label: "Categories" },
-                    { value: "5/5", label: "Catalog matches" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="text-center">
-                      <p className="text-[25px] font-bold tracking-tight text-[#171717]">
-                        {stat.value}
-                      </p>
-
-                      <p className="mt-1 text-[12px] font-medium text-[#777777]">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 flex items-center gap-2 text-[13px] font-medium text-[#686868]">
-                  <Sparkles size={16} className="text-[#1673FF]" />
-                  Technology intelligence and onboarding preparation
-                </div>
-              </div>
+              <FeatureStack />
             </div>
           </div>
         </section>

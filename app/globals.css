@@ -68,3 +68,52 @@ h4 {
 button {
   font-weight: 500;
 }
+
+/* Landing-page product story stack */
+.feature-stack-card[data-position="0"] {
+  transform: translate3d(0, 102px, 0) scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.feature-stack-card[data-position="1"] {
+  transform: translate3d(34px, 68px, 0) scale(0.975) rotate(0.35deg);
+  opacity: 0.97;
+}
+
+.feature-stack-card[data-position="2"] {
+  transform: translate3d(68px, 34px, 0) scale(0.95) rotate(0.7deg);
+  opacity: 0.93;
+}
+
+.feature-stack-card[data-position="3"] {
+  transform: translate3d(102px, 0, 0) scale(0.925) rotate(1.05deg);
+  opacity: 0.88;
+}
+
+.feature-stack-card[data-position="0"]:hover {
+  box-shadow: 0 28px 70px rgba(41, 36, 28, 0.17), 0 5px 16px rgba(41, 36, 28, 0.08);
+}
+
+@media (max-width: 639px) {
+  .feature-stack-card[data-position="0"] {
+    transform: translate3d(0, 54px, 0) scale(1) rotate(0deg);
+  }
+
+  .feature-stack-card[data-position="1"] {
+    transform: translate3d(18px, 36px, 0) scale(0.982) rotate(0.25deg);
+  }
+
+  .feature-stack-card[data-position="2"] {
+    transform: translate3d(36px, 18px, 0) scale(0.964) rotate(0.5deg);
+  }
+
+  .feature-stack-card[data-position="3"] {
+    transform: translate3d(54px, 0, 0) scale(0.946) rotate(0.75deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-stack-card {
+    transition: none;
+  }
+}
