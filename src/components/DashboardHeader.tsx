@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Search, ExternalLink, Bookmark } from "lucide-react";
 import { getCompanyProfile } from "@/lib/normalize";
 import { integrations } from "@/data/integrations";
@@ -40,8 +41,15 @@ export default function DashboardHeader() {
       {/* Company header */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-slate-100 bg-white text-3xl text-red-500 shadow-sm">
-            ◈
+          <div className="flex h-14 w-24 items-center justify-center rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
+            <Image
+              src="/logos/databricks_logo.svg"
+              alt="Databricks"
+              width={579}
+              height={323}
+              className="h-full w-full object-contain"
+              priority
+            />
           </div>
 
           <div>

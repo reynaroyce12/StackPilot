@@ -377,8 +377,8 @@ export default function OnboardingWorkspace() {
                                         <p className="mt-1.5 text-[11px] leading-4 text-slate-500">
                                             {evidence.length} Clay sources
                                             <span className="mx-1.5">·</span>
-                                            First detected:{" "}
-                                            {match.matchedTechnology?.firstDetected ?? "Unknown"}
+                                            {/* First detected:{" "}
+                                            {match.matchedTechnology?.firstDetected ?? "Unknown"} */}
                                         </p>
                                     </div>
 

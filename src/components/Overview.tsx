@@ -159,7 +159,7 @@ export default function Overview() {
                     </div>
 
                     {/* Right: key takeaways */}
-                    <div className="rounded-xl bg-blue-50/70 px-5 py-4">
+                    <div className="self-center rounded-xl bg-blue-50/70 px-5 py-4">
                         <div className="flex items-center gap-2">
                             <Sparkles size={16} className="text-blue-600" />
                             <h3 className="text-md font-semibold text-slate-900">
@@ -400,11 +400,11 @@ export default function Overview() {
                         ))}
                     </div>
 
-                    <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-[13px] font-medium text-[#686868]">
+                    {/* <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3 text-[13px] font-medium text-[#686868]">
                         <ArrowRight size={14} />
                         Full onboarding checklist available in the
                         Readiness Checklist tab.
-                    </div>
+                    </div> */}
                 </section>
             </div>
         </div>

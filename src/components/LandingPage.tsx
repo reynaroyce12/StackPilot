@@ -10,10 +10,12 @@ import {
   Database,
   Link2,
   CheckCircle2,
+  Layers3,
   Users,
 } from "lucide-react";
 
 import FeatureStack from "@/components/FeatureStack";
+import DisclaimerFooter from "@/components/DisclaimerFooter";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -119,21 +121,13 @@ export default function LandingPage() {
             href="/"
             className="flex shrink-0 items-center gap-3"
           >
-            <div className="relative flex h-10 w-10 items-center justify-center">
-              <div className="absolute left-[3px] top-[5px] h-7 w-7 rotate-[-9deg] rounded-[7px] bg-[#F5A4DC]" />
-              <div className="absolute left-[6px] top-[4px] h-7 w-7 rotate-[8deg] rounded-[7px] bg-[#9B8AFF]" />
-              <div className="absolute left-[6px] top-[8px] h-7 w-7 rounded-[7px] bg-[#1673FF]" />
-
-              <Database
-                size={20}
-                strokeWidth={2.3}
-                className="relative text-white"
-              />
+            <div className="rounded-lg bg-blue-600 p-2">
+              <Layers3 className="h-5 w-5 text-white" />
             </div>
 
             <span className="flex flex-col gap-1">
               {/* StackPilot Branding */}
-              <span className="text-[24px] font-bold leading-none tracking-[-0.055em] text-[#171717]">
+              <span className="text-[22px] font-bold leading-none tracking-[-0.04em] text-[#171717]">
                 StackPilot
               </span>
 
@@ -159,7 +153,7 @@ export default function LandingPage() {
           </Link>
 
           {/* Center navigation */}
-          <div className="hidden items-center gap-9 md:flex">
+          <div className="hidden -translate-x-12 items-center gap-9 md:flex">
             <a
               href="#how-it-works"
               className="text-[14px] font-semibold text-[#545454] transition-colors hover:text-black"
@@ -209,23 +203,23 @@ export default function LandingPage() {
         <section className="relative mx-auto max-w-[1200px] px-5 pb-12 pt-16 text-center md:px-8 md:pt-20 lg:pt-24">
 
           {/* Clay badge */}
-          <div className="mb-8 inline-flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-[#E8E5DF] bg-[#FAF9F7] px-4 py-2 shadow-sm">
-            <span className="flex items-center gap-2 text-[13px] font-semibold text-[#292929]">
+          <div className="mb-8 inline-flex max-w-full flex-wrap items-center justify-center gap-x-4 gap-y-1.5 rounded-full border border-[#E2DDD5] bg-[#FAF9F7] px-5 py-2.5 shadow-sm">
+            <span className="flex items-center gap-2.5 text-[14px] font-semibold text-[#292929]">
               Powered by Clay
               <img
                 src="/logos/clay-logo.svg"
                 alt=""
-                width={22}
-                height={22}
-                className="h-[22px] w-auto object-contain"
+                width={25}
+                height={25}
+                className="h-[25px] w-auto object-contain"
               />
 
             </span>
 
-            <span className="hidden h-4 w-px bg-[#DEDAD3] sm:block" />
+            <span className="hidden h-5 w-px bg-[#D8D3CB] sm:block" />
 
-            <span className="text-[12px] font-medium text-[#777777]">
-              Turn company data into integration readiness
+            <span className="text-[13px] font-medium text-[#686868]">
+              Built for engineering productivity
             </span>
           </div>
 
@@ -251,10 +245,11 @@ export default function LandingPage() {
 
           {/* Supporting description */}
           <p className="mx-auto mt-7 max-w-[760px] text-[16px] font-medium leading-[1.7] text-[#666666] md:text-[18px]">
-            StackPilot uses Clay&apos;s enrichment infrastructure to
-            identify a company&apos;s technology stack and turns it into
-            an actionable integration-readiness report for engineering
-            and customer onboarding teams.
+            StackPilot uses Clay&apos;s enrichment feature
+            to uncover company technology stacks and transform those insights
+            into actionable integration-readiness reports, helping B2B SaaS
+            engineering teams reduce manual research and streamline customer
+            onboarding.
           </p>
 
           {/* ========================================
@@ -391,22 +386,21 @@ export default function LandingPage() {
                   Explore StackPilot
                 </span>
 
-                <h2 className="mt-3 text-[30px] font-bold leading-[1.2] tracking-[-0.045em] text-[#171717] md:text-[36px]">
-                  From Clay enrichment to engineering action.
+                <h2 className="mt-3 text-[30px] font-medium leading-[1.2] tracking-[-0.045em] text-[#171717] md:text-[36px]">
+                  Less research. More engineering.
                 </h2>
 
+                <p className="mt-3 text-[15px] font-semibold text-[#3F3F3F]">
+                  From Clay enrichment to engineering action.
+                </p>
+
                 <p className="mt-4 text-[15px] leading-7 text-[#686868]">
-                  StackPilot transforms Clay&apos;s powerful multi-source
-                  enrichment into actionable engineering workflows. Instead
-                  of spending hours manually researching customer tech
-                  stacks, identifying integrations, and figuring out setup
-                  requirements, teams get{" "}
-                  <strong className="font-semibold text-[#3F3F3F]">
-                    instant technology insights, automated matching, and
-                    tailored onboarding plans
-                  </strong>
-                  , so engineers can focus on building rather than
-                  investigating.
+                  StackPilot transforms Clay&apos;s multi-source technology
+                  intelligence into actionable integration-readiness plans,
+                  helping B2B engineering teams identify potential
+                  integrations, verify technical requirements, and streamline
+                  customer onboarding with less manual research and clearer
+                  next steps.
                 </p>
 
                 <button
@@ -425,6 +419,8 @@ export default function LandingPage() {
         </section>
 
       </main>
+
+      <DisclaimerFooter />
     </div>
   );
 }
